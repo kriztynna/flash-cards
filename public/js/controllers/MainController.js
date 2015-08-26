@@ -1,4 +1,4 @@
-app.controller('MainController', function ($scope, whateverName, FlashCardsFactory) {
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
 	$scope.categories = ['MongoDB','Express','Angular','Node'];
 	$scope.currentCategory;
 
@@ -23,6 +23,11 @@ app.controller('MainController', function ($scope, whateverName, FlashCardsFacto
 		if (!flashCard.answered) {
 			flashCard.answered = true;
 			flashCard.answeredCorrectly = answer.correct;
+			if (answer.correct) {
+				ScoreFactory.correct += 1;
+			} else {
+				ScoreFactory.incorrect += 1;
+			}
 		}
 	};
 });
