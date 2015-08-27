@@ -5,8 +5,9 @@
         <!-- We've provided some styles for you, aren't we nice? -->
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/lib/angular.js"></script>
     </head>
-    <body ng-app="flashCards">
+    <body ng-app="flashCards" ng-cloak>
         <div ng-include="'templates/statistics.html'"></div>
         <div ng-controller="MainController">
             <button class="category-button" ng-repeat="category in categories"  ng-class="{active:category===currentCategory}" ng-click="getCategoryCards(category)">{{category}}</button>
@@ -30,7 +31,6 @@
         	    </h2>
         	</div>
         </div>
-    	<script src="js/lib/angular.js"></script>
     	<script src="js/app.js"></script>
     	<script src="js/controllers/MainController.js"></script>
         <script src="js/controllers/StatsController.js"></script>
