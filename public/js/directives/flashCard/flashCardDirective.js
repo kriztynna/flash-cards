@@ -3,6 +3,6 @@ app.directive('flashCardDirective', function(){
 		restrict: 'E',
 		templateUrl: 'js/directives/flashCard/flashCardDirective.html',
 		// link: function(scope, element, arttribute){},
-		// scope: { card: '='}
+		scope: { card: '='}
 	};
 });

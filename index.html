@@ -15,7 +15,7 @@
             <button class="category-button" ng-click="getCategoryCards()">Reset</button>
             <loader ng-show="!ready"></loader>
 
-            <flash-card-directive ng-repeat="flashCard in flashCards | orderBy : 'question'"></flash-card-directive>
+            <flash-card-directive card = 'flashCard' ng-repeat="flashCard in flashCards | orderBy : 'question'"></flash-card-directive>
         	<!-- <div
         		ng-show="ready" ng-repeat="flashCard in flashCards | orderBy : 'question'"
         		class="flash-card">
