@@ -1,23 +1,22 @@
 app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
 	$scope.categories = ['MongoDB','Express','Angular','Node'];
 	$scope.currentCategory;
-
-	FlashCardsFactory.getFlashCards().then(function (flashCards) {
-		$scope.flashCards = flashCards;
-	}).then(null, function (error) {
-		console.log("Error", error);
-	});
+	$scope.ready;
 
 	$scope.getCategoryCards = function (category) {
 		$scope.currentCategory = category;
+		$scope.ready=false;
 		FlashCardsFactory.getFlashCards(category)
 			.then(function (cards) {
 				$scope.flashCards = cards;
+				$scope.ready=true;
 			})
 			.then(null, function (error) {
 				console.error("Error getting category cards.");
 			});
 	};
+
+	$scope.getCategoryCards();
 
 	$scope.answerQuestion = function (answer, flashCard) {
 		if (!flashCard.answered) {

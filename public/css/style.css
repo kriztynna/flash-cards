@@ -76,3 +76,8 @@
         margin-right: 0; }
       #statistics #scoreboard h3 span {
         font-weight: bold; }
+
+.loader {
+  display: block;
+  margin: auto auto;
+}
