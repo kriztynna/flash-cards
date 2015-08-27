@@ -1,13 +1,10 @@
 app.factory('FlashCardsFactory', function ($http) {
-    // return { justTesting: 'testing!' };
     return {
         getFlashCards: function (category) {
-            if (category){
-                return $http.get('/cards?category='+category)
+            var config = {};
+            if (category) {config.params = {category: category};}
+            return $http.get('/cards',config)
                     .then(function(response){return response.data});
-            }
-            return $http.get('/cards')
-                .then(function(response){return response.data});
         }
     };
 });
