@@ -1,4 +1,4 @@
-app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
+app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory, $rootScope) {
 	$scope.categories = FlashCardsFactory.categories;
 	$scope.currentCategory;
 	$scope.ready;
@@ -17,6 +17,10 @@ app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFacto
 	};
 
 	$scope.getCategoryCards();
+
+	$rootScope.$on("insertCard", function(event, card){
+		$scope.flashCards.unshift(card);
+	})
 
 	// $scope.answerQuestion = function (answer, flashCard) {
 	// 	if (!flashCard.answered) {

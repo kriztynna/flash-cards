@@ -1,4 +1,4 @@
-app.controller("NewCardController", function($scope,FlashCardsFactory){
+app.controller("NewCardController", function($scope, FlashCardsFactory, $rootScope){
 	$scope.categories = FlashCardsFactory.categories;
 	$scope.newCard = {
 	    question: null,
@@ -9,5 +9,10 @@ app.controller("NewCardController", function($scope,FlashCardsFactory){
 	        { text: null, correct: false }
 	    ]
 	};
-	$scope.newFlashCard = FlashCardsFactory.newFlashCard;
-})
+	$scope.newFlashCard = function (card){
+		FlashCardsFactory.newFlashCard(card)
+		.then(function(card) {
+			$rootScope.$broadcast("insertCard", card);
+		});
+	};
+});

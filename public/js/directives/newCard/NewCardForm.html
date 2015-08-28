@@ -1,5 +1,5 @@
-<form name="newCardForm">
-	 <div ng-controller="NewCardController">
+
+	<form name="newCardForm" ng-submit="newFlashCard(newCard)">
 	    <input name="question" type='text' ng-model='newCard.question' required ng-minlength="15">
 	    <span ng-show="newCardForm.question.$error.required && newCardForm.question.$dirty">Question is a required field.</span>
 	    <span ng-show="newCardForm.question.$error.minlength">Question is too short.</span>
@@ -13,8 +13,9 @@
 	    	<span ng-show="newCardForm.answer{{n}}.$error.maxlength">Answer is too long.</span>
 	    </span>
 	    
-	    <button ng-click="newFlashCard(newCard)">Submit</button>
+	    <!-- <button ng-click="newFlashCard(newCard)">Submit</button> -->
+	    <button type="submit" id="submit">Submit</button>
 	    <pre>{{ newCard | json }}</pre>
 	    <pre>{{ newCardForm | json }}</pre>
-	</div>
-</form>
+		
+	</form>
