@@ -81,3 +81,7 @@
   display: block;
   margin: auto auto;
 }
+
+.darkborder {
+  border-width: 3px;
+}
