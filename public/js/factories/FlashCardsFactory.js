@@ -6,6 +6,9 @@ app.factory('FlashCardsFactory', function ($http) {
             if (category) {config.params = {category: category};}
             return $http.get('/cards',config)
                     .then(function(response){return response.data;});
+        },
+        newFlashCard: function (card) {
+            return $http.post('/cards',card).then(function(response){return response.data;});
         }
     };
 });

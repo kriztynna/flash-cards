@@ -1,0 +1,25 @@
+ <div ng-controller="NewCardController">
+    <input type='text' ng-model='newCard.question'/>
+    <select ng-model='newCard.category'>
+        <option ng-repeat="cat in categories" value='{{ cat }}'>{{ cat }}</option>
+    </select>
+    <span ng-repeat="n in [0, 1, 2]">
+    	<input type='text' ng-model='newCard.answers[n].text'/>
+    	<input type='checkbox' ng-model='newCard.answers[n].correct'/>
+    </span>
+    <button ng-click="newFlashCard(newCard)">Submit</button>
+    <pre>{{ newCard | json }}</pre>
+</div>
+
+<!--  <div ng-controller="NewCardController">
+    <input type='text' ng-model='newCard.question'/>
+    <select ng-model='newCard.category'>
+        <option ng-repeat="cat in categories" value='{{ cat }}'>{{ cat }}</option>
+    </select>
+    <span ng-repeat="n in [0, 1, 2]">
+    	<input type='text' ng-model='newCard.answers[n].text'/>
+    	<input type='checkbox' ng-model='newCard.answers[n].correct'/>
+    </span>
+    <button ng-click="newFlashCard(newCard)">Submit</button>
+    <pre>{{ newCard | json }}</pre>
+</div> -->

@@ -8,5 +8,6 @@ app.controller("NewCardController", function($scope,FlashCardsFactory){
 	        { text: null, correct: false },
 	        { text: null, correct: false }
 	    ]
-	}
+	};
+	$scope.newFlashCard = FlashCardsFactory.newFlashCard;
 })

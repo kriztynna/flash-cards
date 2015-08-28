@@ -8,9 +8,8 @@
         <script src="js/lib/angular.js"></script>
     </head>
     <body ng-app="flashCards" ng-cloak>
-
         <div ng-include="'templates/statistics.html'"></div>
-        <div ng-include="'templates/NewCardForm.html'"></div>
+        <form></form>
         <div ng-controller="MainController">
             <button class="category-button" ng-repeat="category in categories"  ng-class="{active:category===currentCategory}" ng-click="getCategoryCards(category)">{{category}}</button>
             <button class="category-button" ng-click="getCategoryCards()">Reset</button>
@@ -27,5 +26,6 @@
         <script src="js/directives/flashCard/flashCardDirective.js"></script>
         <script src="js/directives/borderOnHover.js"></script>
         <script src="js/controllers/NewCardController.js"></script>
+        <script src="js/directives/newCard/NewCardForm.js"></script>
     </body>
 </html>
