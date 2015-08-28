@@ -55,13 +55,23 @@ app.get('/cards', function (req, res) {
 });
 
 app.post('/cards', function(req, res){
-    console.log(req.body)
     var newCard = new FlashCardModel(req.body);
-
-
-   newCard.save().then(function(card){
+    newCard.save().then(function(card){
         res.status(201).send(card);
     });
 });
+
+app.put('/cards/:id',function(req,res){
+    FlashCardModel.findById(req.params.id)
+        .then(function(foundCard){
+            Object.keys(req.body).map(function(key){
+                foundCard[key] = req.body[key];
+            });
+            return foundCard.save();
+        })
+        .then(function(updatedCard){
+            res.status(201).send(updatedCard);
+        });
+ });
 
 
