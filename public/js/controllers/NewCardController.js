@@ -13,6 +13,18 @@ app.controller("NewCardController", function($scope, FlashCardsFactory, $rootSco
 		FlashCardsFactory.newFlashCard(card)
 		.then(function(card) {
 			$rootScope.$broadcast("insertCard", card);
+		})
+		.then(function() {
+			for (var key in $scope.newCard) {
+				if (key === 'answers') {
+					$scope.newCard.answers.forEach(function(answer) {
+						answer.text = null;
+						answer.correct = false;
+					});
+				} else {
+					$scope.newCard[key] = null;
+				}
+			}
 		});
 	};
 });
