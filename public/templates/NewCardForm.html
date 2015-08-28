@@ -1,0 +1,11 @@
+ <div ng-controller="NewCardController">
+            <input type='text' ng-model='question'/>
+            <select ng-model='category'>
+                <option value='Express'>Express</option><!-- ng-repeat -->
+            </select>
+            <span ng-repeat="n in [1, 2, 3]">
+            	<input type='text' ng-model='answer.text'/>
+            	<input type='checkbox' ng-model='answer.correct'/>
+            </span>
+
+        </div>
