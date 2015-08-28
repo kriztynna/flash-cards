@@ -9,7 +9,7 @@
     </head>
     <body ng-app="flashCards" ng-cloak>
         <div ng-include="'templates/statistics.html'"></div>
-        <form></form>
+        <new-card-form></new-card-form>
         <div ng-controller="MainController">
             <button class="category-button" ng-repeat="category in categories"  ng-class="{active:category===currentCategory}" ng-click="getCategoryCards(category)">{{category}}</button>
             <button class="category-button" ng-click="getCategoryCards()">Reset</button>
