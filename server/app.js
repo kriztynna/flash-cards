@@ -1,6 +1,8 @@
 var path = require('path');
 var express = require('express');
 var FlashCardModel = require('./models/flash-card-model');
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 
 var app = express(); // Create an express app!
 module.exports = app; // Export it so it can be require('')'d
@@ -10,6 +12,10 @@ var publicPath = path.join(__dirname, '../public');
 
 // The path of our index.html file. ([ROOT]/index.html)
 var indexHtmlPath = path.join(__dirname, '../index.html');
+var bodyParser = require('body-parser');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 // http://nodejs.org/docs/latest/api/globals.html#globals_dirname
 // for more information about __dirname
@@ -28,7 +34,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(function (req, res, next) {
-	console.log('made it')
+	console.log('made it');
 	next();
 });
 
@@ -47,3 +53,15 @@ app.get('/cards', function (req, res) {
     });
 
 });
+
+app.post('/cards', function(req, res){
+    console.log(req.body)
+    var newCard = new FlashCardModel(req.body);
+
+
+   newCard.save().then(function(card){
+        res.status(201).send(card);
+    });
+});
+
+
