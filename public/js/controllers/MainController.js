@@ -1,5 +1,5 @@
 app.controller('MainController', function ($scope, FlashCardsFactory, ScoreFactory) {
-	$scope.categories = ['MongoDB','Express','Angular','Node'];
+	$scope.categories = FlashCardsFactory.categories;
 	$scope.currentCategory;
 	$scope.ready;
 

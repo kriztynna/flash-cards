@@ -1,4 +1,5 @@
-app.controller("NewCardController", function($scope){
+app.controller("NewCardController", function($scope,FlashCardsFactory){
+	$scope.categories = FlashCardsFactory.categories;
 	$scope.newCard = {
 	    question: null,
 	    category: null,
